@@ -16,4 +16,9 @@ button {
     color: #284848;
     text-align: center;
     margin: 0 20;
-} 
+}
+
+.fieldTitle {
+    font-weight: bold;
+    margin-top: 10;
+}

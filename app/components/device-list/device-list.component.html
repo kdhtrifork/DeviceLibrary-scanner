@@ -1,0 +1,11 @@
+<ActionBar title="Device Details">
+    <ActionItem text="Scan" (tap)="scan()"></ActionItem>
+    <ActionItem text="Add" (tap)="create()" ios.position="right"></ActionItem>
+</ActionBar>
+<GridLayout>
+  <ListView [items]="devices" class="small-spacing">
+    <template let-item="item">
+      <Label [text]="item.name" class="medium-spacing" (tap)="showDetails(item._id)"></Label>
+    </template>
+  </ListView>
+</GridLayout>

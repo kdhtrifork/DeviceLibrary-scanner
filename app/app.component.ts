@@ -1,21 +1,23 @@
-import {Component} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import * as BarcodeScanner from "nativescript-barcodescanner";
+import './rxjs-operators';
 
 @Component({
-    selector: "my-app",
-    templateUrl: "app.component.html",
+  selector: "main",
+  template: "<page-router-outlet></page-router-outlet>"
 })
-export class AppComponent {
-    public counter: number = 16;
+export class AppComponent implements OnInit {
+    public constructor() {}
 
-    public get message(): string {
-        if (this.counter > 0) {
-            return this.counter + " taps left";
-        } else {
-            return "Hoorraaay! \nYou are ready to start building!";
-        }
-    }
-    
-    public onTap() {
-        this.counter--;
+    public ngOnInit() {
+        BarcodeScanner.available().then((available) => {
+            if(available) {
+                BarcodeScanner.hasCameraPermission().then((granted) => {
+                    if(!granted) {
+                        BarcodeScanner.requestCameraPermission();
+                    }
+                });
+            }
+        });
     }
 }

@@ -1,0 +1,15 @@
+<ActionBar title="Create Device">
+    <ActionItem text="Save" (tap)="save()" ios.position="right"></ActionItem>
+</ActionBar>
+<StackLayout>
+    <Label text="ID" class="fieldTitle"></Label>
+    <TextField [(ngModel)]="device._id"></TextField>
+    <Label text="Device" class="fieldTitle"></Label>
+    <TextField [(ngModel)]="device.name"></TextField>
+    <Label text="OS" class="fieldTitle"></Label>
+    <TextField [(ngModel)]="device.os"></TextField>
+    <Label text="OS version" class="fieldTitle"></Label>
+    <TextField [(ngModel)]="device.osversion"></TextField>
+    <Label text="Model" class="fieldTitle"></Label>
+    <TextField [(ngModel)]="device.model"></TextField>
+</StackLayout>
