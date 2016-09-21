@@ -20,20 +20,22 @@ export class DeviceDetailComponent implements OnInit {
         let id = params['id'];
         console.log('Details for ' + id);
 
+        console.log(this.deviceService.devices$);
+        this.device$ = this.deviceService.devices$.map(devices => {
+          console.log('Map in detail');
+          return devices[0];
+        });
         this.device$ = this.deviceService.devices$
-          .map(devices => {
-            console.log('Before loop: ' + devices.length);
-            let foundDevice: Device;
-            devices.forEach(device => {
-              if ( device._id === id ) {
-                foundDevice = device;
-              }
-            });
-            return foundDevice;
-          });
-
+          .map(this.deviceByIdFilter(id));
         this.deviceService.load(id);
       });
+    }
+
+    private deviceByIdFilter(id) {
+      return (devices) => {
+        let result = devices.filter(device => device._id === id);
+        return result.length === 1 ? result[0] : undefined;
+      };
     }
 
 }

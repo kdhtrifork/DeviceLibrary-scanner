@@ -1,11 +1,11 @@
 <ActionBar title="Device Details"></ActionBar>
 <StackLayout>
     <Label text="Device" class="fieldTitle"></Label>
-    <Label [text]="device$.name | async"></Label>
+    <Label [text]="(device$ | async)?.name"></Label>
     <Label text="OS" class="fieldTitle"></Label>
-    <Label [text]="device$.os | async"></Label>
+    <Label [text]="(device$ | async)?.os"></Label>
     <Label text="OS version" class="fieldTitle"></Label>
-    <Label [text]="device$.osversion | async"></Label>
+    <Label [text]="(device$ | async)?.osversion"></Label>
     <Label text="Model" class="fieldTitle"></Label>
-    <Label [text]="device$.model | async"></Label>
+    <Label [text]="(device$ | async)?.model"></Label>
 </StackLayout>

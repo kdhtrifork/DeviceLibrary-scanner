@@ -37,6 +37,8 @@ export class DeviceService {
     	let foundDevice;
     	if ( data instanceof Array && data.length === 1 ) {
     		foundDevice = data[0];
+    	} else {
+    		foundDevice = data;
     	}
 
     	if ( !foundDevice ) {
@@ -54,7 +56,9 @@ export class DeviceService {
       if (notFound) {
         this.dataStore.devices.push(foundDevice);
       }
+      console.log('Before next in single load');
       this._devices$.next(this.dataStore.devices);
+      console.log('After next in single load');
     }, error => console.log('Could not load device.'));
   }
 

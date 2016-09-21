@@ -30,6 +30,7 @@ export class DeviceListComponent implements OnInit {
 
     public scan() {
         BarcodeScanner.scan({
+            formats: "QR_CODE",
             cancelLabel: "Stop scanning",
             message: "Go scan something",
             preferFrontCamera: false,
@@ -37,7 +38,7 @@ export class DeviceListComponent implements OnInit {
         }).then((result) => {
             console.log('Scanned: ', result.text);
             this.showDetails(result.text);
-        });
+        }, (error) => console.log("No scan: " + error) );
     }
 
     public create() {
