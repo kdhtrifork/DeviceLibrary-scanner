@@ -3,36 +3,25 @@ import {Router} from "@angular/router";
 import { Device } from "../../shared/device/device";
 import { DeviceService } from "../../shared/device/device.service";
 import * as BarcodeScanner from "nativescript-barcodescanner";
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
     selector: "device-list",
-    templateUrl: "./components/device-list/device-list.component.html",
-    providers: [DeviceService]
+    templateUrl: "./components/device-list/device-list.component.html"
 })
 export class DeviceListComponent implements OnInit {
 
-    devices: Device[] = [];
+    devices$: Observable<Device[]>;
     private errorMessage : string;
 
     public constructor(private router: Router, private deviceService: DeviceService) {
     }
 
     ngOnInit() {
-      this.deviceService.getAll()
-        .subscribe(
-        //   loadedGroceries => {
-        // loadedGroceries.forEach((groceryObject) => {
-        //   this.groceryList.unshift(groceryObject);
-        // }
-          loadedDevices => {
-            loadedDevices.forEach((device) => {
-              console.log('Handling: ' + device._id);
-              this.devices.unshift(device);
-            }
-          )},
-          error =>  this.errorMessage = <any>error
-        );
+      this.devices$ = this.deviceService.devices$; // subscribe to entire collection
+    
+      this.deviceService.loadAll();    // load all todos
     }
 
     public showDetails(id: string) {

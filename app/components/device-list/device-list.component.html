@@ -3,7 +3,7 @@
     <ActionItem text="Add" (tap)="create()" ios.position="right"></ActionItem>
 </ActionBar>
 <GridLayout>
-  <ListView [items]="devices" class="small-spacing">
+  <ListView [items]="devices$ | async" class="small-spacing">
     <template let-item="item">
       <Label [text]="item.name" class="medium-spacing" (tap)="showDetails(item._id)"></Label>
     </template>
