@@ -36,8 +36,8 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-# Ignore generated app.css
-/app/app.css
+# Ignore generated css files
+/app/**/*.css
 
 # NativeScript things
 /platforms

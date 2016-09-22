@@ -1,11 +1,11 @@
 <ActionBar title="Device Details"></ActionBar>
 <StackLayout>
-    <Label text="Device" class="fieldTitle"></Label>
-    <Label [text]="(device$ | async)?.name"></Label>
-    <Label text="OS" class="fieldTitle"></Label>
-    <Label [text]="(device$ | async)?.os"></Label>
-    <Label text="OS version" class="fieldTitle"></Label>
-    <Label [text]="(device$ | async)?.osversion"></Label>
-    <Label text="Model" class="fieldTitle"></Label>
-    <Label [text]="(device$ | async)?.model"></Label>
+    <Label text="Device" class="field-title"></Label>
+    <Label [text]="(device$ | async)?.name" class="detail-label"></Label>
+    <Label text="OS" class="field-title"></Label>
+    <Label [text]="(device$ | async)?.os" class="detail-label"></Label>
+    <Label text="OS version" class="field-title"></Label>
+    <Label [text]="(device$ | async)?.osversion" class="detail-label"></Label>
+    <Label text="Model" class="field-title"></Label>
+    <Label [text]="(device$ | async)?.model" class="detail-label"></Label>
 </StackLayout>

@@ -18,7 +18,11 @@ button {
     margin: 0 20;
 }
 
-.fieldTitle {
+.field-title {
     font-weight: bold;
     margin-top: 10;
+}
+
+.medium-spacing {
+    padding: $medium-size-padding;
 }

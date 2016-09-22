@@ -1,0 +1,10 @@
+@import "./sass/_variables.scss"; // Path relative to app/
+
+.field-title {
+	text-align: left;
+	color: red;
+}
+.detail-label {
+	text-align: left;
+	padding: $small-size-padding;
+}

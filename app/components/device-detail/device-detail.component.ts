@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: "details",
-    templateUrl: "./components/device-detail/device-detail.component.html"
+    templateUrl: "./components/device-detail/device-detail.component.html",
+    styleUrls: ['./components/device-detail/device-detail.css']
 })
 export class DeviceDetailComponent implements OnInit {
 
@@ -18,15 +19,10 @@ export class DeviceDetailComponent implements OnInit {
     public ngOnInit() {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
-        console.log('Details for ' + id);
 
-        console.log(this.deviceService.devices$);
-        this.device$ = this.deviceService.devices$.map(devices => {
-          console.log('Map in detail');
-          return devices[0];
-        });
         this.device$ = this.deviceService.devices$
           .map(this.deviceByIdFilter(id));
+          
         this.deviceService.load(id);
       });
     }

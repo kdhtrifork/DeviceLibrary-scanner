@@ -56,9 +56,8 @@ export class DeviceService {
       if (notFound) {
         this.dataStore.devices.push(foundDevice);
       }
-      console.log('Before next in single load');
+      
       this._devices$.next(this.dataStore.devices);
-      console.log('After next in single load');
     }, error => console.log('Could not load device.'));
   }
 
